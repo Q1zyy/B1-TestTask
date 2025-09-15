@@ -7,9 +7,10 @@ public class FileGenerator
     private static readonly string _englishAlpahbet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static readonly string _russianAlpahbet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
-    public void GenerateFiles(int fileCount = 1, int linesCount = 1)
+    public static void GenerateFiles(string filesFolder, int fileCount = 1, int linesCount = 1)
     {
-        string folder = Path.Combine(Directory.GetCurrentDirectory(), "GeneratedFiles");
+        var folder = Path.Combine(filesFolder, "GeneratedFiles");
+
         Directory.CreateDirectory(folder);
         var random = new Random();
 
@@ -29,7 +30,7 @@ public class FileGenerator
 
                 var randomEnglishLetters = GenerateString(_englishAlpahbet, 10);
         
-                var randomNaturalNumber = random.Next(1, 50_000_000) * 2;
+                var randomNaturalNumber = random.Next(1, 50_000_000) * 2;   
 
                 var randomDouble = random.Next(1, 20) + random.NextDouble();
                 var randomDobuleString = randomDouble.ToString("F8");
@@ -41,7 +42,7 @@ public class FileGenerator
         }
     }
 
-    private string GenerateString(string alphabet, int length)
+    private static string GenerateString(string alphabet, int length)
     {
         var random = new Random();  
         var result = new StringBuilder();
