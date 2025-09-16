@@ -4,7 +4,7 @@ public class BankExpensesEntity
 {
     public int Id { get; set; }
     public int FileId { get; set; }
-    public string? Account { ge t; set; }
+    public string? Account { get; set; }
     public decimal? SaldoInActive { get; set; }
     public decimal? SaldoInPassive { get; set; }
     public decimal? TurnoverDebit { get; set; }
