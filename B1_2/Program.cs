@@ -1,23 +1,23 @@
-using B1_2.Infrastructure;
+п»їusing B1_2.Infrastructure;
 using B1_2.Interfaces;
 using B1_2.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//регистрируем контроллеры и сваггер
+// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹ Рё СЃРІР°РіРіРµСЂ
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//регистрируем dbContext
+//СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј dbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//регистрируем в DI FileService
+//СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РІ DI FileService
 builder.Services.AddScoped<IFileService, FileService>();
 
-//настраиваем cors
+//РЅР°СЃС‚СЂР°РёРІР°РµРј cors
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
